@@ -31,14 +31,14 @@ func main() {
 	tags, err := hub.Tags("tigerworks/labels")
 	oneliners.FILE(tags, err)
 
+	//m2, err := hub.Manifest("tigerworks/labels", "latest")
+	//oneliners.FILE(m2.Name, m2.Tag)
+	//d2, err := m2.MarshalJSON()
+	//oneliners.FILE(string(d2))
+
 	manifest, err := hub.ManifestV2("tigerworks/labels", "latest")
-	//data, err := manifest.MarshalJSON()
-	//oneliners.FILE(string(data), err)
-
-	//digest, err := hub.ManifestDigest("tigerworks/labels", "latest")
-	//oneliners.FILE(digest, err)
-
 	oneliners.FILE(manifest.Config.Digest.Encoded())
+	oneliners.FILE(manifest.Layers[0].Digest.Encoded())
 
 	reader, err := hub.DownloadLayer("tigerworks/labels", manifest.Config.Digest)
 	if err != nil {
