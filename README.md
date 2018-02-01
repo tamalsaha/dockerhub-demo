@@ -8,3 +8,5 @@
 
 -----------------------------------------------------
 - https://github.com/kubernetes/kubernetes/pull/33014
+
+https://github.com/kubernetes/kubernetes/blob/ffde8296375e51f1ebaf8248b338787cfea38f86/pkg/kubelet/dockershim/docker_image.go#L139
