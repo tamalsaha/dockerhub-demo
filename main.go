@@ -21,14 +21,12 @@ func main() {
 	oneliners.FILE(err)
 
 	// https://github.com/kubernetes/kubernetes/blob/a7a3dcfc527123b6cca15913fbb309172ef2c6e4/pkg/util/parsers/parsers.go#L33
+	// https://github.com/kubernetes/kubernetes/blob/master/pkg/util/parsers/parsers_test.go
 	repo, tag, digestHash, err := parsers.ParseImageName("tigerworks/labels:latest")
 	oneliners.FILE(err)
 	oneliners.FILE("repo = ", repo)
 	oneliners.FILE("tag = ", tag)
 	oneliners.FILE("digest = ", digestHash)
-
-	repositories, err := hub.Repositories()
-	oneliners.FILE(repositories)
 
 	tags, err := hub.Tags("tigerworks/labels")
 	oneliners.FILE(tags, err)
